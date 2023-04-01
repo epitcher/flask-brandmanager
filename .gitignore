@@ -1,0 +1,58 @@
+# .gitignore
+
+# Python cache files and artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Flask instance and log files
+instance/
+*.log
+
+# Compiled Python files
+*.pyc
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyo
+*.pyd
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+
+# Editor backup files
+*.swp
+*.swo
+*.swn
+*.bak
+
+# SQLite database files
+*.sqlite3
+
+# Static files and uploaded files
+static/uploads/
+
+# Environment variable files
+.env
+
+# Configuration files
+config.py
+production_config.py
+
+# IDE files
+.vscode/
+.pytest_cache/
+.pyright/
+.idea/
+*.iml
