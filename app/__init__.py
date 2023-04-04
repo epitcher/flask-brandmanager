@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from jinja2 import FileSystemLoader, ChoiceLoader
 
 def create_app():
@@ -33,4 +33,7 @@ def create_app():
     app.register_blueprint(admin_storage_controller)
     app.register_blueprint(upload_controller)
 
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
     return app
