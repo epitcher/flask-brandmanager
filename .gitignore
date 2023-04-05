@@ -56,3 +56,18 @@ production_config.py
 .pyright/
 .idea/
 *.iml
+
+# npm dependencies
+/node_modules/
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# npm package lock files
+package-lock.json
+yarn.lock
+
+# Tailwind CSS output file (Consider enabling to enforce reproducibility)
+# /static/css/output.css
