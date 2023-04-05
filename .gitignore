@@ -69,5 +69,5 @@ yarn-error.log*
 package-lock.json
 yarn.lock
 
-# Tailwind CSS output file (Consider enabling to enforce reproducibility)
-# /static/css/output.css
+# Tailwind CSS output file
+/static/css/output.css
