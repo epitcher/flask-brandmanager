@@ -1,5 +1,10 @@
-from flask import Flask, send_from_directory
+import sys
+from flask import Flask, send_from_directory, render_template, redirect, url_for, request, flash
 from jinja2 import FileSystemLoader, ChoiceLoader
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
+
+from .src.user import User, users
 
 def create_app():
     app = Flask(__name__)
@@ -21,6 +26,11 @@ def create_app():
     from .modules.admin.controllers.AdminStorageController import admin_storage_controller
     from .modules.admin.controllers.UploadController import upload_controller
 
+    app.secret_key = 'some_secret_key'
+
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = 'login_controller.login'
 
     # Module "user" defacto default module
     app.register_blueprint(site_controller)
@@ -33,6 +43,12 @@ def create_app():
     app.register_blueprint(analytics_controller)
     app.register_blueprint(admin_storage_controller)
     app.register_blueprint(upload_controller)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        if user_id in users:
+            return User(user_id, users[user_id]['password'], users[user_id]['authenticated'])
+        return None
 
     @app.route('/favicon.ico')
     def favicon():

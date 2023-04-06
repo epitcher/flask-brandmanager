@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    
+
     <div class="flex items-center justify-center h-screen w-screen bg-neutral-200">
 
         <section class="gradient-form h-full">
@@ -23,15 +23,19 @@
                                     <div class="md:mx-6 md:p-12">
                                         <div class="text-center">
                                             <img class="mx-auto w-48 rounded-lg mb-6"
-                                                src="{{ url_for('static', filename='icon/android-chrome-192x192.png') }}" alt="logo" />
+                                                src="{{ url_for('static', filename='icon/android-chrome-192x192.png') }}"
+                                                alt="logo" />
                                             <h4 class="mt-1 mb-12 pb-1 text-xl font-semibold">
                                                 flask-brandmanager
                                             </h4>
                                         </div>
-                                        <form>
+                                        <form method="POST">
+                                            {% if get_flashed_messages() %}
+                                            <p class="text-xl text-red-600">Please check your login details</p>
+                                            {% endif %}
                                             <p class="mb-4">Please login to your account</p>
                                             <div class="relative mb-4" data-te-input-wrapper-init>
-                                                <input type="text"
+                                                <input type="text" name="username"
                                                     class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                                     id="exampleFormControlInput1" placeholder="Username" />
                                                 <label for="exampleFormControlInput1"
@@ -39,7 +43,7 @@
                                                 </label>
                                             </div>
                                             <div class="relative mb-4" data-te-input-wrapper-init>
-                                                <input type="password"
+                                                <input type="password" name="password"
                                                     class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                                                     id="exampleFormControlInput11" placeholder="Password" />
                                                 <label for="exampleFormControlInput11"
@@ -49,7 +53,7 @@
                                             <div class="mb-12 pt-1 pb-1 text-center">
                                                 <button
                                                     class="mb-3 inline-block w-full rounded px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]"
-                                                    type="button" data-te-ripple-init data-te-ripple-color="light"
+                                                    type="submit" data-te-ripple-init data-te-ripple-color="light"
                                                     style="
                                                     background: linear-gradient(to right, #ee7724, #d8363a,  #C060A1);
                                                     ">
