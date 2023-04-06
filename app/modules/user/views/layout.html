@@ -17,14 +17,16 @@
                 </a>
                 <input type="search" class="search bg-transparent border-2 border-gray-400 rounded ml-5 px-3 py-1 text-white w-auto focus:outline-none" placeholder="Search...">
                 <a href="{{ url_for('storage_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">My Library</a>
-                <a href="{{ url_for('search_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Browse</a>
+                <a href="{{ url_for('search_controller.products') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Browse</a>
                 <a href="{{ url_for('login_controller.logout') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Logout</a>
             </div>
             <div class="nav-right flex items-center">
-                <a href="">
+                <a href="{{ url_for('storage_controller.index') }}">
                     <p class="add-new-btn bg-transparent border-none text-white align-middle no-underline inline-block text-4xl mx-5 cursor-pointer hover:text-gray-300 flex items-center justify-center h-10 w-10 pb-2">+</p>
                 </a>
-                <button class="user-icon bg-white border-none text-black text-center no-underline inline-block text-lg mx-1 cursor-pointer rounded-full h-9 w-9 flex items-center justify-center">E</button>
+                <a href="{{ url_for('account_controller.index') }}">
+                    <button class="user-icon bg-white border-none text-black text-center no-underline inline-block text-lg mx-1 cursor-pointer rounded-full h-9 w-9 flex items-center justify-center">E</button>
+                </a>
             </div>            
         </div>
 

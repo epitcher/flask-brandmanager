@@ -30,9 +30,19 @@
                                             </h4>
                                         </div>
                                         <form method="POST">
-                                            {% if get_flashed_messages() %}
-                                            <p class="text-xl text-red-600">Please check your login details</p>
+                                            {% with messages = get_flashed_messages() %}
+                                            {% if messages %}
+                                            <ul class="flashes mb-4">
+                                                {% for message in messages %}
+                                                {% if 'success' in message %}
+                                                <li class="text-xl text-green-600">{{ message }}</li>
+                                                {% else %}
+                                                <li class="text-xl text-red-600">{{ message }}</li>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </ul>
                                             {% endif %}
+                                            {% endwith %}
                                             <p class="mb-4">Please login to your account</p>
                                             <div class="relative mb-4" data-te-input-wrapper-init>
                                                 <input type="text" name="username"
