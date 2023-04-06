@@ -70,4 +70,4 @@ package-lock.json
 yarn.lock
 
 # Tailwind CSS output file
-/static/css/output.css
+app/static/css/output.css
