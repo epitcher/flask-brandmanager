@@ -1,6 +1,8 @@
 {
   "scripts":{
-    "styles": "npx tailwindcss build -i app/static/css/styles.css -o app/static/css/output.css"
+    "styles": "npx tailwindcss build -i app/static/css/styles.css -o app/static/css/output.css",
+    "run": "python run.py",
+    "test": "python -m pytest"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",

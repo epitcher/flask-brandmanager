@@ -14,36 +14,38 @@ def client():
     with app.test_client() as client:
         yield client
 
-# ... (tests) ...
-
-def test_favicon(client):
-    response = client.get('/favicon.ico')
-    assert response.status_code == 200
-    assert response.mimetype == 'image/vnd.microsoft.icon'
-
-def test_login_get(client):
-    response = client.get('/login')
-    print(response.data)
-    assert response.status_code == 200
-    assert b'Login' in response.data
-
-def test_login_post_valid_credentials(client):
-    response = client.post('/login', data=dict(username=valid_username, password=valid_password), follow_redirects=True)
-    assert response.status_code == 200
-    assert b'Browse Materials' in response.data
-
-def test_login_post_invalid_credentials(client):
-    response = client.post('/login', data=dict(username=invalid_username, password=invalid_password), follow_redirects=True)
-    assert response.status_code == 401
-
 def login(client, username, password):
     return client.post('/login', data=dict(username=username, password=password), follow_redirects=True)
 
 def logout(client):
     return client.get('/logout', follow_redirects=True)
 
+# Test favicon
+def test_favicon(client):
+    response = client.get('/favicon.ico')
+    assert response.status_code == 200
+    assert response.mimetype == 'image/vnd.microsoft.icon'
+
+# Test login page
+def test_login_get(client):
+    response = client.get('/login')
+    assert response.status_code == 200
+    assert b'Login' in response.data
+
+# Test valid login credentials
+def test_login_post_valid_credentials(client):
+    response = login(client, valid_username, valid_password)
+    assert response.status_code == 200
+    assert b'Browse Materials' in response.data
+
+# Test invalid login credentials
+def test_login_post_invalid_credentials(client):
+    response = login(client, invalid_username, invalid_password)
+    assert response.status_code == 401
+
+# Test logout functionality
 def test_logout(client):
-    # Log in with valid credentials (replace 'valid_username' and 'valid_password' with actual valid credentials)
+    # Log in with valid credentials
     login_response = login(client, valid_username, valid_password)
     assert b'Browse Materials' in login_response.data
 
@@ -52,3 +54,82 @@ def test_logout(client):
     assert logout_response.status_code == 200
     assert b'Logged out successfully' in logout_response.data
     assert b'Login' in logout_response.data
+
+## Test module/user ##
+
+# Test /account page access for non-logged-in users
+def test_account_access_non_logged_in_user(client):
+    response = client.get('/account', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Login' in response.data
+
+# Test /account page access for logged-in users
+def test_account_access_logged_in_user(client):
+    # Use login utility
+    login(client, valid_username, valid_password)
+
+    # Access the /account page
+    account_response = client.get('/account', follow_redirects=True)
+    assert account_response.status_code == 200
+    assert b'Account' in account_response.data
+
+    # Log out
+    logout(client)
+
+# Test /search page access for non-logged-in users
+def test_search_access_non_logged_in_user(client):
+    response = client.get('/search', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Login' in response.data
+
+# Test /search page access for logged-in users
+def test_search_access_logged_in_user(client):
+    login(client, valid_username, valid_password)
+
+    search_response = client.get('/search', follow_redirects=True)
+    assert search_response.status_code == 200
+    assert b'Search' in search_response.data
+
+    logout(client)
+
+# Test /site page access for non-logged-in users
+def test_site_access_non_logged_in_user(client):
+    response = client.get('/', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Login' in response.data
+
+# Test /site page access for logged-in users
+def test_site_access_logged_in_user(client):
+    login(client, valid_username, valid_password)
+
+    site_response = client.get('/', follow_redirects=True)
+    assert site_response.status_code == 200
+    assert b'Home' in site_response.data
+
+    logout(client)
+
+# Test /storage page access for non-logged-in users
+def test_storage_access_non_logged_in_user(client):
+    response = client.get('/storage', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Login' in response.data
+
+# Test /storage page access for logged-in users
+def test_storage_access_logged_in_user(client):
+    login(client, valid_username, valid_password)
+
+    storage_response = client.get('/storage', follow_redirects=True)
+    assert storage_response.status_code == 200
+    assert b'Storage' in storage_response.data
+
+    logout(client)
+
+
+
+## Test Errors ##
+
+# Test 404 error page
+def test_404_page(client):
+    response = client.get('/nonexistent_route')
+    assert response.status_code == 404
+    assert b'404' in response.data # Expand?
