@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="px-4 py-6">
+    <h2 class="text-xl font-semibold mb-4">Browse Materials</h2>
+    <div class="grid grid-cols-4 gap-4">
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 1 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 1</h2>
+                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod commodo
+                    augue vitae blandit. Sed euismod est sed lectus posuere porta.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <!-- Repeat for the remaining 22 products -->
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-4">
+            <div class="mb-4">
+                <img src="https://placehold.co/300x200" alt="Product 2 thumbnail" class="w-full rounded-lg">
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Product 2</h2>
+                <p class="text-gray-700">Sed vitae metus quis urna ultrices eleifend. Duis fringilla dolor in nunc
+                    faucibus, vel pellentesque purus dignissim. Proin facilisis urna vitae libero elementum congue.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="fixed right-0 bottom-0 p-4 py-6">
+
+    <div class="p-6 max-w-sm mx-auto bg-emerald-200	 rounded-xl shadow-lg flex items-center space-x-4">
+        <div class="shrink-0">
+            <img class="h-12 w-12 rounded-full" src="{{ url_for('static', filename='icon/android-chrome-192x192.png') }}"
+                alt="ChitChat Logo">
+        </div>
+        <div>
+            <div class="text-xl font-medium text-black">Notification</div>
+            <p class="text-slate-500">You have a new message!</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

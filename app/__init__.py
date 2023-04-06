@@ -11,8 +11,8 @@ def create_app():
     # Combine the loaders using ChoiceLoader
     app.jinja_loader = ChoiceLoader([loader_uploader, loader_user])
 
-    from .main import main
-
+    from .modules.user.controllers.SiteController import site_controller
+    from .modules.user.controllers.LoginController import login_controller
     from .modules.user.controllers.AccountController import account_controller
     from .modules.user.controllers.SearchController import search_controller
     from .modules.user.controllers.StorageController import storage_controller
@@ -21,9 +21,10 @@ def create_app():
     from .modules.admin.controllers.AdminStorageController import admin_storage_controller
     from .modules.admin.controllers.UploadController import upload_controller
 
-    app.register_blueprint(main)
 
     # Module "user" defacto default module
+    app.register_blueprint(site_controller)
+    app.register_blueprint(login_controller)
     app.register_blueprint(account_controller)
     app.register_blueprint(search_controller)
     app.register_blueprint(storage_controller)

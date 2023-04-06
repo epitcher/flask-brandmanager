@@ -1,8 +1,8 @@
 module.exports = {
     mode: 'jit',
     purge: [
-        './app/modules/consumer/views/**/*.html',
-        './app/modules/author/views/**/*.html',
+        './app/modules/user/views/**/*.html',
+        './app/modules/admin/views/**/*.html',
     ],
     theme: {
         extend: {}
