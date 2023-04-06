@@ -6,7 +6,7 @@ from ....src.user import User, users
 
 login_controller = Blueprint('login_controller', __name__)
 
-@login_controller.route('/index', methods=['GET', 'POST'])
+@login_controller.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('site_controller.index'))
@@ -21,6 +21,7 @@ def login():
             return redirect(url_for('site_controller.index'))
         else:
             flash('Invalid username or password', 'danger')
+            return render_template('login/index.html'), 401
 
     return render_template('login/index.html')
 
@@ -28,9 +29,6 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash('Logged out successfully')
     return redirect(url_for('login_controller.login'))
 
-@login_controller.route('/dashboard')
-@login_required
-def dashboard():
-    return f'Welcome, {current_user.id}!'
