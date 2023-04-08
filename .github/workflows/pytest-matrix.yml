@@ -1,4 +1,4 @@
-name: Run pytest on commit
+name: pytest-matrix
 
 on: 
   push:
