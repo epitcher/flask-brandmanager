@@ -1,5 +1,7 @@
 # flask-brandmanager
 
+[![pytest](https://github.com/epitcher/flask-brandmanager/actions/workflows/pytest.yml/badge.svg)](https://github.com/epitcher/flask-brandmanager/actions/workflows/pytest.yml)
+
 **todo**
 
 ## Prerequisites
