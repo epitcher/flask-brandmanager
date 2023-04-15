@@ -71,3 +71,8 @@ yarn.lock
 
 # Tailwind CSS output file
 app/static/css/output.css
+
+
+# VueJs build files
+app/static/js/*
+app/static/css/*
