@@ -68,12 +68,12 @@ def create_app():
 
         def get_javascript_files():
             file_type="js"
-            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', file_type)
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/dist', file_type)
             return [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
         
         def get_css_files():
             file_type="css"
-            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', file_type)
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/dist', file_type)
             
             file_list = [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
             to_remove = ['styles.css']
