@@ -5,34 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+
+    {% for file in css_files %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/' + file ) }}">
+    {% endfor %}
+
+    {% for file in javascript_files %}
+    <script type="module" crossorigin src="{{ url_for('static', filename='dist/js/' + file )}}"></script>
+    {% endfor %}
 </head>
 
 <body>
-
-        <div class="top-bar flex justify-between items-center px-10 py-5 bg-gray-800 h-16">
-            <div class="nav-left flex items-center font-semibold text-sm">
-                <a href="{{ url_for('site_controller.index') }}" class="inline-block">
-                    <img src="{{ url_for('static', filename='icon/android-chrome-192x192.png') }}" alt="Logo" class="logo rounded-full h-10 w-10 object-cover">
-                </a>
-                <input type="search" class="search bg-transparent border-2 border-gray-400 rounded ml-5 px-3 py-1 text-white w-auto focus:outline-none" placeholder="Search...">
-                <a href="{{ url_for('storage_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">My Library</a>
-                <a href="{{ url_for('search_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Browse</a>
-                <a href="{{ url_for('login_controller.logout') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Logout</a>
-            </div>
-            <div class="nav-right flex items-center">
-                <a href="{{ url_for('storage_controller.index') }}">
-                    <p class="add-new-btn bg-transparent border-none text-white align-middle no-underline inline-block text-4xl mx-5 cursor-pointer hover:text-gray-300 flex items-center justify-center h-10 w-10 pb-2">+</p>
-                </a>
-                <a href="{{ url_for('account_controller.index') }}">
-                    <button class="user-icon bg-white border-none text-black text-center no-underline inline-block text-lg mx-1 cursor-pointer rounded-full h-9 w-9 flex items-center justify-center">E</button>
-                </a>
-            </div>            
+    <div class="top-bar flex justify-between items-center px-10 py-5 bg-gray-800 h-16">
+        <div class="nav-left flex items-center font-semibold text-sm">
+            <a href="{{ url_for('site_controller.index') }}" class="inline-block">
+                <img src="{{ url_for('static', filename='icon/android-chrome-192x192.png') }}" alt="Logo" class="logo rounded-full h-10 w-10 object-cover">
+            </a>
+            <input type="search" class="search bg-transparent border-2 border-gray-400 rounded ml-5 px-3 py-1 text-white w-auto focus:outline-none" placeholder="Search...">
+            <a href="{{ url_for('storage_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">My Library</a>
+            <a href="{{ url_for('search_controller.index') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Browse</a>
+            <a href="{{ url_for('login_controller.logout') }}" class="nav-item ml-5 text-white no-underline relative hover:text-gray-300">Logout</a>
         </div>
+        <div class="nav-right flex items-center">
+            <a href="{{ url_for('storage_controller.index') }}">
+                <p class="add-new-btn bg-transparent border-none text-white align-middle no-underline inline-block text-4xl mx-5 cursor-pointer hover:text-gray-300 flex items-center justify-center h-10 w-10 pb-2">+</p>
+            </a>
+            <a href="{{ url_for('account_controller.index') }}">
+                <button class="user-icon bg-white border-none text-black text-center no-underline inline-block text-lg mx-1 cursor-pointer rounded-full h-9 w-9 flex items-center justify-center">E</button>
+            </a>
+        </div>            
+    </div>
 
-        <div class="content">
-            {% block content %}{% endblock %}
-        </div>
+    <div id="app"></div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
 
 </body>
 

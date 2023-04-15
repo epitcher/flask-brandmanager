@@ -1,4 +1,5 @@
 import sys
+import os
 from flask import Flask, send_from_directory, render_template, redirect, url_for, request, flash
 from jinja2 import FileSystemLoader, ChoiceLoader
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -52,7 +53,7 @@ def create_app():
 
     @app.route('/favicon.ico')
     def favicon():
-        return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+        return send_from_directory('static', 'icon/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
     @app.errorhandler(404)
     def not_found_error(error):
@@ -61,5 +62,24 @@ def create_app():
     @app.errorhandler(500)
     def not_found_error(error):
         return render_template('500.html'), 500
+    
+    @app.context_processor
+    def helpers():
+
+        def get_javascript_files():
+            file_type="js"
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/dist', file_type)
+            return [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
+        
+        def get_css_files():
+            file_type="css"
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/dist', file_type)
+            
+            return [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
+
+        return dict(
+            javascript_files=get_javascript_files(),
+            css_files=get_css_files()
+        )
 
     return app
