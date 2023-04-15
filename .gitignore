@@ -75,4 +75,6 @@ app/static/css/output.css
 
 # VueJs build files
 app/static/dist/js/*
+!app/static/dist/js/example.js
 app/static/dist/css/*
+!app/sttic/dist/css/example.css
