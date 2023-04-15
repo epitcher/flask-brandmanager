@@ -66,17 +66,26 @@ def create_app():
     @app.context_processor
     def helpers():
 
-        def inject_javascript_files():
-            js_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'js')
-            return [f for f in os.listdir(js_dir) if f.endswith('.js')]
+        def get_javascript_files():
+            file_type="js"
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', file_type)
+            return [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
         
-        def inject_css_files():
-            js_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'css')
-            return [f for f in os.listdir(js_dir) if f.endswith('.css')]
+        def get_css_files():
+            file_type="css"
+            dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', file_type)
+            
+            file_list = [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
+            to_remove = ['styles.css']
+            for item in to_remove:
+                if item in file_list:
+                    file_list.remove(item)
+
+            return file_list
 
         return dict(
-            javascript_files=inject_javascript_files(),
-            css_files=inject_css_files()
+            javascript_files=get_javascript_files(),
+            css_files=get_css_files()
         )
 
     return app
