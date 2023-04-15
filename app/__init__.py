@@ -53,7 +53,7 @@ def create_app():
 
     @app.route('/favicon.ico')
     def favicon():
-        return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+        return send_from_directory('static', 'icon/favicon.ico', mimetype='image/vnd.microsoft.icon')
 
     @app.errorhandler(404)
     def not_found_error(error):
