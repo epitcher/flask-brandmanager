@@ -70,8 +70,13 @@ def create_app():
             js_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'js')
             return [f for f in os.listdir(js_dir) if f.endswith('.js')]
         
+        def inject_css_files():
+            js_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'css')
+            return [f for f in os.listdir(js_dir) if f.endswith('.css')]
+
         return dict(
-            javascript_files=inject_javascript_files()
+            javascript_files=inject_javascript_files(),
+            css_files=inject_css_files()
         )
 
     return app

@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+
+    {% for file in css_files %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/' + file ) }}">
+    {% endfor %}
 
     {% for file in javascript_files %}
     <script type="module" crossorigin src="{{ url_for('static', filename='js/' + file )}}"></script>
@@ -14,7 +17,7 @@
 
 <body>
     <div id="app"></div>
-    
+
     <div class="top-bar flex justify-between items-center px-10 py-5 bg-gray-800 h-16">
         <div class="nav-left flex items-center font-semibold text-sm">
             <a href="{{ url_for('site_controller.index') }}" class="inline-block">
