@@ -75,13 +75,7 @@ def create_app():
             file_type="css"
             dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/dist', file_type)
             
-            file_list = [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
-            to_remove = ['styles.css']
-            for item in to_remove:
-                if item in file_list:
-                    file_list.remove(item)
-
-            return file_list
+            return [f for f in os.listdir(dir) if f.endswith('.' + file_type)]
 
         return dict(
             javascript_files=get_javascript_files(),
