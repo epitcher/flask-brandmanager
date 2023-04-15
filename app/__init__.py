@@ -1,4 +1,5 @@
 import sys
+import os
 from flask import Flask, send_from_directory, render_template, redirect, url_for, request, flash
 from jinja2 import FileSystemLoader, ChoiceLoader
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -61,5 +62,16 @@ def create_app():
     @app.errorhandler(500)
     def not_found_error(error):
         return render_template('500.html'), 500
+    
+    @app.context_processor
+    def helpers():
+
+        def inject_javascript_files():
+            js_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'js')
+            return [f for f in os.listdir(js_dir) if f.endswith('.js')]
+        
+        return dict(
+            javascript_files=inject_javascript_files()
+        )
 
     return app
