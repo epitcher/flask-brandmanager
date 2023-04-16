@@ -76,3 +76,6 @@ app/static/css/output.css
 # VueJs build files
 app/static/dist/js/*
 app/static/dist/css/*
+
+# Code coverage files
+.coverage

@@ -1,10 +1,11 @@
 {
-  "scripts":{
+  "scripts": {
     "styles": "npx tailwindcss build -i app/static/css/styles.css -o app/static/css/output.css",
     "run": "python run.py",
     "test": "python -m pytest",
     "action-test": "act -j test",
-    "action-test-matrix": "act -j test-version-matrix"
+    "action-test-matrix": "act -j test-version-matrix",
+    "coverage": "python -m coverage run -m pytest && python -m coverage report"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
