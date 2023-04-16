@@ -25,7 +25,7 @@ def test_login_get(client):
 def test_login_post_valid_credentials(client):
     response = login(client, valid_username, valid_password)
     assert response.status_code == 200
-    assert b'Browse Materials' in response.data
+    assert b'Home' in response.data
 
 # Test invalid login credentials
 def test_login_post_invalid_credentials(client):
@@ -36,7 +36,7 @@ def test_login_post_invalid_credentials(client):
 def test_logout(client):
     # Log in with valid credentials
     login_response = login(client, valid_username, valid_password)
-    assert b'Browse Materials' in login_response.data
+    assert b'Home' in login_response.data
 
     # Log out
     logout_response = logout(client)

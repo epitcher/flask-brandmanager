@@ -4,25 +4,7 @@
 
 {% block content %}
 
-<div class="px-4 py-6">
-    <h2 class="text-xl font-semibold mb-4">Browse Materials</h2>
-    <div class="grid grid-cols-4 gap-4">
-        {% for product in products %}
-        <div class="bg-gray-100 rounded-lg p-4">
-            <div class="mb-4">
-                <img src="https://placehold.co/300x200" alt="Product 1 thumbnail" class="w-full rounded-lg">
-            </div>
-            <div>
-                <h2 class="text-lg font-semibold mb-2">{{ product.name }}</h2>
-                <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod commodo
-                    augue vitae blandit. Sed euismod est sed lectus posuere porta.</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-</div>
-
+<div id="app"></div>
 
 <div class="fixed right-0 bottom-0 p-4 py-6">
 
