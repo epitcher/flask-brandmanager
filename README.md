@@ -84,12 +84,12 @@ python run.py
 
 1. Navigate to frontend
     ```bash
-    `cd frontend`
+    cd frontend
     ```
 
 2. Build from vuejs files
-    ```
-    `npm run build`
+    ```bash
+    npm run build
     ```
 
 ## Helpful Stuff
