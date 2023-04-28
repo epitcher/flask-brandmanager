@@ -5,6 +5,7 @@
     "test": "python -m pytest",
     "action-test": "act -j test",
     "action-test-matrix": "act -j test-version-matrix",
+    "vue-build": "npx vite build frontend --emptyOutDir",
     "coverage": "python -m coverage run -m pytest && python -m coverage report"
   },
   "dependencies": {
