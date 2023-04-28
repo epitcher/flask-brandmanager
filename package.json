@@ -4,7 +4,8 @@
     "run": "python run.py",
     "test": "python -m pytest",
     "action-test": "act -j test",
-    "action-test-matrix": "act -j test-version-matrix"
+    "action-test-matrix": "act -j test-version-matrix",
+    "vue-build": "npx vite build frontend --emptyOutDir"
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
