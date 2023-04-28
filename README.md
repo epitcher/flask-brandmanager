@@ -11,6 +11,11 @@
 - pyenv (optional)
 - npm (optional)
 
+## Stack
+- Flask
+- VueJs
+- Tailwindcss
+
 ## Getting Started
 
 There are two ways to set up and run this project:
@@ -74,6 +79,22 @@ npm run styles
 ```
 python run.py
 ```
+
+## Using VueJs
+
+1. Navigate to frontend
+    ```bash
+    cd frontend
+    ```
+
+2. Build from vuejs files
+    ```bash
+    npm run build
+    ```
+
+## Helpful Stuff
+
+- `npm run coverage`  Runs test coverage analysis on the codebase and calculates the percentage of code covered by tests.
 
 
 ## Usage
