@@ -3,3 +3,4 @@ Flask_Login==0.6.2
 Jinja2==3.1.2
 pytest==7.2.2
 Werkzeug==2.2.3
+coverage==7.2.3
